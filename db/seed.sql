@@ -16,6 +16,7 @@ age_range TEXT
 
 create table theaters (
 theater_id SERIAL PRIMARY KEY,
+name TEXT
 location TEXT,
 description TEXT,
 contact TEXT,
