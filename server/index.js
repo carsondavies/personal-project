@@ -4,6 +4,7 @@ const session = require('express-session')
 const massive = require('massive')
 const authCtrl = require('./authController')
 const userCtrl = require('./userController')
+const theaterCtrl = require('./theatreController')
 
 
 const app = express()
@@ -23,11 +24,16 @@ app.use(
 /*
 PUT YOUR ENDPOINTS HERE CARSON FOR ALL YOUR CONTROLLERS
 */
-//auth endpoints
+//userauth endpoints
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 app.delete('/auth/logout', authCtrl.logout)
 app.get('/auth/user', authCtrl.getUser)
+
+//theaterauth endpoints
+app.post('/auth/registertheater', theaterCtrl.registerTheater)
+app.post('/auth/logintheater', theaterCtrl.loginTheater)
+
 
 //user endpoints
 app.put('/api/users/:user_id', userCtrl.editUser)

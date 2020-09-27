@@ -16,7 +16,8 @@ age_range TEXT
 
 create table theaters (
 theater_id SERIAL PRIMARY KEY,
-name TEXT
+theater_name TEXT,
+email VARCHAR(100),
 location TEXT,
 description TEXT,
 contact TEXT,
@@ -30,6 +31,11 @@ theater_id INT references theaters(theater_id)
 
 create table auth (
 user_id INT references users(id),
+password_hash VARCHAR(100)
+);
+
+CREATE TABLE theater_auth (
+theater_id INT references theaters(theater_id),
 password_hash VARCHAR(100)
 );
 

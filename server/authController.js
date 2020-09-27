@@ -19,6 +19,8 @@ module.exports = {
 
     const [newUser] = await db.register_user([first_name, last_name, email, hash])
 
+    // await db.store_hash([newUser.id, hash])
+
     req.session.user = newUser
 
     res.status(200).send(req.session.user)
