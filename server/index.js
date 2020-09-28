@@ -4,7 +4,9 @@ const session = require('express-session')
 const massive = require('massive')
 const authCtrl = require('./authController')
 const userCtrl = require('./userController')
-const theaterCtrl = require('./theatreController')
+const theaterCtrl = require('./theaterController')
+const resourceCtrl = require('./resourceController')
+const auditionCtrl = require('./auditionController')
 
 
 const app = express()
@@ -33,7 +35,20 @@ app.get('/auth/user', authCtrl.getUser)
 //theaterauth endpoints
 app.post('/auth/registertheater', theaterCtrl.registerTheater)
 app.post('/auth/logintheater', theaterCtrl.loginTheater)
+app.delete('/auth/logouttheater', theaterCtrl.logoutTheater)
+app.get('/auth/theater', theaterCtrl.getTheater)
 
+//audition endpoints
+app.get('/api/auditions', auditionCtrl.getAuditions)
+app.post('/api/auditions', /*middleware to verify theater */ auditionCtrl.addAudition)
+app.put('/api/auditions/:audition_id', /*middleware to verify theater */ auditionCtrl.editAudition)
+app.delete('/api/auditions/:audition_id', /*middleware to verify theater */ auditionCtrl.deleteAudition)
+
+//adding video endpoints
+app.post('/api/videos/bass', resourceCtrl.addVideoToBass)
+app.post('/api/videos/tenor', resourceCtrl.addVideoToTenor)
+app.post('/api/videos/alto', resourceCtrl.addVideoToAlto)
+app.post('/api/videos/soprano', resourceCtrl.addVideoToSoprano)
 
 //user endpoints
 app.put('/api/users/:user_id', userCtrl.editUser)

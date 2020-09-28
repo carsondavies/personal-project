@@ -1,0 +1,2 @@
+-- SELECT * FROM users u, auditions a, 
+-- JOIN 
