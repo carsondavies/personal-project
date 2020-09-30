@@ -6,7 +6,7 @@ module.exports = {
 
     const { theater_name, email, password } = req.body
 
-    const [theater] = await db.check_theater([theater_name])
+    const [theater] = await db.authentication.check_theater([theater_name, email])
 
     if (theater) {
       return res.status(409).send('Theater already registered')
@@ -16,7 +16,7 @@ module.exports = {
 
     const hash = bcrypt.hashSync(password, salt)
 
-    const [newTheater] = await db.register_theater([theater_name, email, hash])
+    const [newTheater] = await db.authentication.register_theater([theater_name, email, hash])
 
     req.session.user = newTheater
 
@@ -28,7 +28,7 @@ module.exports = {
 
     const { email, password } = req.body
 
-    const [existingTheater] = await db.check_theater_login([email])
+    const [existingTheater] = await db.authentication.check_theater_login([email])
 
     if (!existingTheater) {
       return res.status(404).send('Theater not found')

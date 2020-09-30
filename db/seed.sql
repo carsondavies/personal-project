@@ -1,42 +1,55 @@
 CREATE TABLE users (
 id SERIAL PRIMARY KEY,
-email VARCHAR(100),
-first_name VARCHAR(50),
-last_name VARCHAR(50),
-headshot TEXT,
-resume TEXT,
-vocal_range TEXT,
-height TEXT,
-weight TEXT,
-eye_color TEXT,
-hair_color TEXT,
-ethnicities TEXT,
-age_range TEXT
+user_email VARCHAR(100),
+first_name VARCHAR(100),
+last_name VARCHAR(100),
+headshot VARCHAR(1000),
+resume VARCHAR(1000),
+vocal_range  VARCHAR(1000),
+height  VARCHAR(1000),
+weight  VARCHAR(1000),
+eye_color  VARCHAR(1000),
+hair_color  VARCHAR(1000),
+ethnicities  VARCHAR(1000),
+age_range  VARCHAR(1000)
 );
 
 create table theaters (
 theater_id SERIAL PRIMARY KEY,
-theater_name TEXT,
-email VARCHAR(100),
-location TEXT,
-description TEXT,
-contact TEXT,
+theater_name VARCHAR(1000),
+theater_email VARCHAR(1000),
+location VARCHAR(1000),
+description VARCHAR(5000),
+contact VARCHAR(1000),
 verified boolean
 );
 
 CREATE TABLE auditions (
 id SERIAL PRIMARY KEY,
-show TEXT,
-run_dates TEXT,
-pay_rate TEXT,
-rehearsal_dates TEXT,
-theater_id INT references theaters(theater_id),
-user_id INT references users(id)
+show VARCHAR(1000),
+run_dates VARCHAR(1000),
+pay_rate VARCHAR(1000),
+rehearsal_dates VARCHAR(1000),
+theater_id INT references theaters(theater_id)
 );
 
 create table connections (
+connection_id SERIAL PRIMARY KEY
 user_id INT references users(id),
 theater_id INT references theaters(theater_id)
+audition_id INT references auditions(id)
+);
+
+CREATE TABLE videos (
+video_id SERIAL PRIMARY KEY,
+vocal_range VARCHAR(100),
+video_url VARCHAR(1000)
+);
+
+CREATE TABLE subscriptions (
+subscription_id SERIAL PRIMARY KEY
+user_id INT REFERENCES users(id),
+video_id INT REFERENCES videos(video_id)
 );
 
 create table auth (
@@ -47,28 +60,4 @@ password_hash VARCHAR(100)
 CREATE TABLE theater_auth (
 theater_id INT references theaters(theater_id),
 password_hash VARCHAR(100)
-);
-
-create table bass (
-  id SERIAL PRIMARY KEY,
-  user_id INT references users(id), 
-  video TEXT
-);
-
-create table tenor (
-  id SERIAL PRIMARY KEY,
-  user_id INT references users(id),
-  video TEXT
-);
-
-create table alto (
-  id SERIAL PRIMARY KEY,
-  user_id INT references users(id),
-  video TEXT
-);
-
-create table soprano (
-  id SERIAL PRIMARY KEY,
-  user_id INT references users(id),
-  video TEXT
 );

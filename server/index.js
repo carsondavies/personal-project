@@ -51,7 +51,14 @@ app.post('/api/videos/alto', resourceCtrl.addVideoToAlto)
 app.post('/api/videos/soprano', resourceCtrl.addVideoToSoprano)
 
 //user endpoints
-app.put('/api/users/:user_id', userCtrl.editUser)
+app.put('/api/users', userCtrl.editUser)
+app.get('/api/users', userCtrl.getUserInfo)
+app.post('/api/users/:video_id', userCtrl.connectVideo)
+app.delete('/api/users/:video_id', userCtrl.disconnectVideo)
+app.post('/api/users/theaters/:theater_id', userCtrl.connectTheater)
+app.delete('/api/users/theaters/:theater_id', userCtrl.disconnectTheater)
+app.post('/api/users/:audition_id/:theater_id', userCtrl.connectAudition)
+app.delete('/api/users/:theater_id', userCtrl.disconnectAudition)
 
 massive({
   connectionString: CONNECTION_STRING,

@@ -3,15 +3,15 @@ module.exports = {
     //will be an input field for users to paste link to add video to db.
     const db = req.app.get('db')
 
-    const { videoURL } = req.body
+    const { video_url } = req.body
 
-    const [video] = await db.check_bass_video([videoURL])
+    const [video] = await db.videoQueries.check_bass_video([video_url])
 
     if (video) {
-      return res.status(409).send('Video already in database')
+      return res.status(409).send('Video already in bass database')
     } else {
-      await db.add_bass_video([videoURL])
-      res.status(200).send('Video added to database')
+      await db.videoQueries.add_bass_video([video_url])
+      res.status(200).send('Video added to bass database')
     }
   },
 
@@ -19,15 +19,15 @@ module.exports = {
     //will be an input field for users to paste link to add video to db.
     const db = req.app.get('db')
 
-    const { videoURL } = req.body
+    const { video_url } = req.body
 
-    const [video] = await db.check_tenor_video([videoURL])
+    const [video] = await db.videoQueries.check_tenor_video([video_url])
 
     if (video) {
-      return res.status(409).send('Video already in database')
+      return res.status(409).send('Video already in tenor database')
     } else {
-      await db.add_tenor_video([videoURL])
-      res.status(200).send('Video added to database')
+      await db.videoQueries.add_tenor_video([video_url])
+      res.status(200).send('Video added to tenor database')
     }
   },
 
@@ -35,15 +35,15 @@ module.exports = {
     //will be an input field for users to paste link to add video to db.
     const db = req.app.get('db')
 
-    const { videoURL } = req.body
+    const { video_url } = req.body
 
-    const [video] = await db.check_alto_video([videoURL])
+    const [video] = await db.videoQueries.check_alto_video([video_url])
 
     if (video) {
-      return res.status(409).send('Video already in database')
+      return res.status(409).send('Video already in alto database')
     } else {
-      await db.add_alto_video([videoURL])
-      res.status(200).send('Video added to database')
+      await db.videoQueries.add_alto_video([video_url])
+      res.status(200).send('Video added to alto database')
     }
   },
 
@@ -51,15 +51,15 @@ module.exports = {
     //will be an input field for users to paste link to add video to db.
     const db = req.app.get('db')
 
-    const { videoURL } = req.body
+    const { video_url } = req.body
 
-    const [video] = await db.check_soprano_video([videoURL])
+    const [video] = await db.videoQueries.check_soprano_video([video_url])
 
     if (video) {
-      return res.status(409).send('Video already in database')
+      return res.status(409).send('Video already in soprano database')
     } else {
-      await db.add_soprano_video([videoURL])
-      res.status(200).send('Video added to database')
+      await db.videoQueries.add_soprano_video([video_url])
+      res.status(200).send('Video added to soprano database')
     }
   }
 }

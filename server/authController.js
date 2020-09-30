@@ -7,7 +7,7 @@ module.exports = {
 
     const { first_name, last_name, email, password } = req.body
 
-    const [user] = await db.check_user([email])
+    const [user] = await db.authentication.check_user([email])
 
     if (user) {
       return res.status(409).send('User already exists')
@@ -17,7 +17,7 @@ module.exports = {
 
     const hash = bcrypt.hashSync(password, salt)
 
-    const [newUser] = await db.register_user([first_name, last_name, email, hash])
+    const [newUser] = await db.authentication.register_user([first_name, last_name, email, hash])
 
     // await db.store_hash([newUser.id, hash])
 
@@ -31,7 +31,7 @@ module.exports = {
 
     const { email, password } = req.body
 
-    const [existingUser] = await db.check_user_login([email])
+    const [existingUser] = await db.authentication.check_user_login([email])
 
     if (!existingUser) {
       return res.status(404).send('User not found')

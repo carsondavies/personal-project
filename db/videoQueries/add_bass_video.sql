@@ -1,4 +1,4 @@
-INSERT INTO bass
-(video)
+INSERT INTO videos
+(vocal_range, video_url)
 VALUES
-($1);
+('bass', $1);

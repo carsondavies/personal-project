@@ -1,2 +1,2 @@
-SELECT * FROM soprano
-WHERE video = $1;
+SELECT * FROM videos
+WHERE vocal_range = 'soprano' AND video_url = $1;

@@ -1,2 +1,2 @@
-SELECT * FROM alto
-WHERE video = $1;
+SELECT * FROM videos
+WHERE vocal_range = 'alto' AND video_url = $1;

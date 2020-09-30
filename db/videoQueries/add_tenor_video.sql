@@ -1,4 +1,4 @@
-INSERT INTO tenor
-(video)
+INSERT INTO videos
+(vocal_range, video_url)
 VALUES
-($1);
+('tenor', $1);

@@ -1,5 +1,5 @@
 const getAllAuditions = async (db) => {
-  const auditions = await db.get_auditions()
+  const auditions = await db.auditions.get_auditions()
   return auditions
 }
 
@@ -17,7 +17,7 @@ module.exports = {
 
     const { theater_id } = req.session.user
 
-    const [newAudition] = await db.add_audition([show, run_dates, pay_rate, rehearsal_dates, theater_id])
+    const [newAudition] = await db.auditions.add_audition([show, run_dates, pay_rate, rehearsal_dates, theater_id])
 
     res.status(200).send(newAudition)
   },
@@ -28,11 +28,11 @@ module.exports = {
 
     const { show, run_dates, pay_rate, rehearsal_dates } = req.body
 
-    const { id } = req.params
-
+    const { audition_id } = req.params
+    console.log(show, run_dates, pay_rate, rehearsal_dates, audition_id)
     // const {theater_id} = req.session.user
 
-    await db.edit_audition([show, run_dates, pay_rate, rehearsal_dates, id])
+    await db.auditions.edit_audition([show, run_dates, pay_rate, rehearsal_dates, audition_id])
 
     const auditions = await getAllAuditions(db)
     res.status(200).send(auditions)
@@ -43,7 +43,7 @@ module.exports = {
 
     const { audition_id } = req.params
 
-    await db.delete_audition([audition_id])
+    await db.auditions.delete_audition([audition_id])
 
     const auditions = await getAllAuditions(db)
     res.status(200).send(auditions)
