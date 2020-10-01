@@ -1,4 +1,68 @@
-.theater-map{
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+.auth-view {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   width: 100vw;
+  background: linear-gradient(to right, #FF70A6, #FF9770, #FFD670, #E9FF70);
+  
+}
+
+.auth-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 400px;
+  width: 500px;
+  background: linear-gradient(to right ,#FF9770, #FFD670);
+  -webkit-box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
+box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
+}
+
+.auth-logos{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.auth-logos > h2 {
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'Open Sans', sans-serif
+}
+
+.input-boxes{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 70px;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+}
+
+.auth-button-container {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.auth-button-container > button {
+  background-color: black;
+  color: white;
+  height: 40px;
+  width: 80px;
+  border-radius: 5%;
+  /* box-shadow: inset 0px, 0px, 10px, 5px, white; */
 }
