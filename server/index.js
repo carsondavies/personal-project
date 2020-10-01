@@ -1,12 +1,13 @@
 require('dotenv').config()
 const express = require('express')
-const session = require('express-session')
 const massive = require('massive')
-const authCtrl = require('./authController')
-const userCtrl = require('./userController')
-const theaterCtrl = require('./theaterController')
-const resourceCtrl = require('./resourceController')
-const auditionCtrl = require('./auditionController')
+const session = require('express-session')
+const authCtrl = require('./Controllers/authController')
+const userCtrl = require('./Controllers/userController')
+const theaterCtrl = require('./Controllers/theaterController')
+const resourceCtrl = require('./Controllers/resourceController')
+const verifyUser = require('./middlewares/verifyUser')
+const verifyTheater = require('./middlewares/verifyTheater')
 
 
 const app = express()
@@ -26,33 +27,43 @@ app.use(
 /*
 PUT YOUR ENDPOINTS HERE CARSON FOR ALL YOUR CONTROLLERS
 */
-//userauth endpoints
+//userauth endpoints still needs nodemailer
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 app.delete('/auth/logout', authCtrl.logout)
 app.get('/auth/user', authCtrl.getUser)
-
-//theaterauth endpoints
-app.post('/auth/registertheater', theaterCtrl.registerTheater)
-app.post('/auth/logintheater', theaterCtrl.loginTheater)
-app.delete('/auth/logouttheater', theaterCtrl.logoutTheater)
-app.get('/auth/theater', theaterCtrl.getTheater)
-
-//audition endpoints
-app.get('/api/auditions', auditionCtrl.getAuditions)
-app.post('/api/auditions', /*middleware to verify theater */ auditionCtrl.addAudition)
-app.put('/api/auditions/:audition_id', /*middleware to verify theater */ auditionCtrl.editAudition)
-app.delete('/api/auditions/:audition_id', /*middleware to verify theater */ auditionCtrl.deleteAudition)
+app.post('/auth/registertheater', authCtrl.registerTheater)
+app.post('/auth/logintheater', authCtrl.loginTheater)
+app.delete('/auth/logouttheater', authCtrl.logoutTheater)
+app.get('/auth/theater', authCtrl.getTheater)
 
 //adding video endpoints
-app.post('/api/videos/bass', resourceCtrl.addVideoToBass)
-app.post('/api/videos/tenor', resourceCtrl.addVideoToTenor)
-app.post('/api/videos/alto', resourceCtrl.addVideoToAlto)
-app.post('/api/videos/soprano', resourceCtrl.addVideoToSoprano)
+app.post('/api/videos/bass', verifyUser, resourceCtrl.addVideoToBass)
+app.post('/api/videos/tenor', verifyUser, resourceCtrl.addVideoToTenor)
+app.post('/api/videos/alto', verifyUser, resourceCtrl.addVideoToAlto)
+app.post('/api/videos/soprano', verifyUser, resourceCtrl.addVideoToSoprano)
+
+
+//audition endpoints only accessible to verified theaters
+app.put('/api/theaters', verifyTheater, theaterCtrl.editTheaterInfo)
+app.get('/api/theaterauditions/:theater_id', verifyTheater, theaterCtrl.getTheaterAuditions)
+app.post('/api/postaudition', verifyTheater, theaterCtrl.addAudition)
+app.put('/api/auditions/:audition_id', verifyTheater, theaterCtrl.editAudition)
+app.delete('/api/auditions/:audition_id', verifyTheater, theaterCtrl.deleteAudition)
+
 
 //user endpoints
+app.get('/api/videos', userCtrl.getAllVideos)
+app.get('/api/auditions', userCtrl.getAllAuditions)
+app.get('/api/theaters', userCtrl.getAllTheaters)
+
+
 app.put('/api/users', userCtrl.editUser)
-app.get('/api/users', userCtrl.getUserInfo)
+app.get('/api/users/userinfo', userCtrl.getUserInfo)
+app.get('/api/users/uservideos', userCtrl.getUserVideos)
+app.get('/api/users/userauditions', userCtrl.getUserAuditions)
+app.get('/api/users/usertheaters', userCtrl.getUserTheaters)
+
 app.post('/api/users/:video_id', userCtrl.connectVideo)
 app.delete('/api/users/:video_id', userCtrl.disconnectVideo)
 app.post('/api/users/theaters/:theater_id', userCtrl.connectTheater)

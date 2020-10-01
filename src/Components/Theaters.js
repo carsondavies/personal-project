@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Auth = () => {
+const Theaters = () => {
 
   return (
     <div>
-      Auth.js
+      Theaters.js
     </div>
   )
 }
 
-export default Auth
+export default Theaters

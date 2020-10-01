@@ -1,11 +1,19 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import './App.css';
-import Dashboard from './Components/Dashboard/Dashboard';
+import routes from './routes'
+import Header from './Components/Header/Header'
+import Auth from './Components/Auth/Auth'
+
 
 function App() {
+
+
   return (
     <div className="App">
-      <Dashboard />
+      <Header />
+      <Auth />
+      {routes}
     </div>
   );
 }

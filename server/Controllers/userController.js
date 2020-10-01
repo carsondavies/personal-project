@@ -1,26 +1,40 @@
-const getUserInfo = async (db, id) => {
-  let user = await db.userCtrl.get_user_info([id])
-  console.log('everything hit')
-  if (!user[0]) {
-    user = await db.userCtrl.get_user_without_connections([id])
-    console.log('without connections hit')
-  }
-  if (!user[0]) {
-    user = await db.userCtrl.get_user_without_videos([id])
-    console.log('wo vidoes hit')
-  }
-  if (!user[0]) {
-    user = await db.userCtrl.get_user_without_auditions([id])
-    console.log('wo auditions hit')
-  }
-  if (!user[0]) {
-    user = await db.userCtrl.get_user_without_theaters([id])
-    console.log('wo theaters hit')
-  }
-  return user
-}
+// const getUserInfo = require('../utils/getAllUserInfo')
+const getAllAuditions = require('../utils/getAllAuditions')
+const getAllVideos = require('../utils/getAllVideos')
+const getAllTheaters = require('../utils/getAllTheaters')
 
 module.exports = {
+  getAllAuditions: async (req, res) => {
+    const db = req.app.get('db')
+    const auditions = await getAllAuditions(db)
+    res.status(200).send(auditions)
+  },
+
+  getAllVideos: async (req, res) => {
+    const db = req.app.get('db')
+    const videos = await getAllVideos(db)
+    res.status(200).send(videos)
+  },
+
+  getAllTheaters: async (req, res) => {
+    const db = req.app.get('db')
+    const theaters = await getAllTheaters(db)
+    res.status(200).send(theaters)
+  },
+
+  getUserInfo: async (req, res) => {
+    // big ol join statement in db to get data to display for users profile.
+    const db = req.app.get('db')
+    const { id } = req.session.user
+
+    // const user = await getUserInfo(db, id)
+
+    const [user] = await db.get_user_info(id)
+
+    // console.log(user)
+    res.status(200).send(user)
+  },
+
   editUser: async (req, res) => {
     const db = req.app.get('db')
 
@@ -33,16 +47,33 @@ module.exports = {
     res.status(200).send(updatedUser)
   },
 
-  getUserInfo: async (req, res) => {
-    // big ol join statement in db to get data to display for users profile.
+  getUserVideos: async (req, res) => {
     const db = req.app.get('db')
     const { id } = req.session.user
 
-    const user = await getUserInfo(db, id)
+    const [userVideos] = await db.get_user_videos(id)
 
-    // console.log(user)
-    res.status(200).send(user)
+    res.status(200).send(userVideos)
   },
+
+  getUserAuditions: async (req, res) => {
+    const db = req.app.get('db')
+    const { id } = req.session.user
+
+    const [userAuditions] = await db.get_user_auditions(id)
+
+    res.status(200).send(userAuditions)
+  },
+
+  getUserTheaters: async (req, res) => {
+    const db = req.app.get('db')
+    const { id } = req.session.user
+
+    const [userTheaters] = await db.get_user_theaters(id)
+
+    res.status(200).send(userTheaters)
+  },
+
 
 
   connectVideo: async (req, res) => {
