@@ -21,7 +21,7 @@ module.exports = {
     // await db.store_hash([newUser.id, hash])
 
     req.session.user = newUser
-
+    console.log(req.session.user)
     res.status(200).send(req.session.user)
   },
 

@@ -8,6 +8,7 @@ const Header = (props) => {
   const logout = () => {
     axios.delete('auth/logout').then(() => {
       props.logoutUser()
+      props.history.push('/')
     })
   }
 
