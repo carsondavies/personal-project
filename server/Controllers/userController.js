@@ -51,7 +51,7 @@ module.exports = {
     const db = req.app.get('db')
     const { id } = req.session.user
 
-    const [userVideos] = await db.get_user_videos(id)
+    const userVideos = await db.get_user_videos(id)
 
     res.status(200).send(userVideos)
   },
@@ -60,7 +60,7 @@ module.exports = {
     const db = req.app.get('db')
     const { id } = req.session.user
 
-    const [userAuditions] = await db.get_user_auditions(id)
+    const userAuditions = await db.get_user_auditions(id)
 
     res.status(200).send(userAuditions)
   },
@@ -69,7 +69,7 @@ module.exports = {
     const db = req.app.get('db')
     const { id } = req.session.user
 
-    const [userTheaters] = await db.get_user_theaters(id)
+    const userTheaters = await db.get_user_theaters(id)
 
     res.status(200).send(userTheaters)
   },
@@ -136,7 +136,8 @@ module.exports = {
   connectAudition: async (req, res) => {
     //makes makes foreign key connection to audiitions table in db.
     const db = req.app.get('db')
-
+    // console.log(req.params)
+    // console.log(req.session.user)
     const { id } = req.session.user
     const { audition_id, theater_id } = req.params
 
@@ -151,9 +152,9 @@ module.exports = {
     const db = req.app.get('db')
 
     const { id } = req.session.user
-    const { theater_id } = req.params
+    const { theater_id, audition_id } = req.params
 
-    let result = await db.userCtrl.disconnect_audition([id, theater_id])
+    let result = await db.userCtrl.disconnect_audition([id, theater_id, audition_id])
 
     // let user = getUserInfo(db, id)
 

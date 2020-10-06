@@ -1,29 +1,31 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 import AuditionThumb from './AuditionThumb'
+import { getAuditions } from '../dux/auditionReducer'
 
-const Auditions = () => {
-  const [auditions, setAuditions] = useState([])
+const Auditions = (props) => {
 
   useEffect(() => {
-    getAuditions()
+    props.getAuditions()
   }, [])
 
-  const getAuditions = () => {
-    axios.get('/api/auditions')
-      .then(res => setAuditions(res.data))
-      .catch(err => alert(err))
-  }
 
+  console.log(props)
   return (
     <div>
-      {auditions.map((audition, index) => {
+      {props.auditions.auditions.map((audition) => {
         return (
-          <AuditionThumb key={index} audition={audition} getAuditions={getAuditions} />
+          <AuditionThumb
+            key={audition.id}
+            audition={audition}
+            getAuditions={getAuditions}
+            generalAuditions={true} />
         )
       })}
     </div>
   )
 }
 
-export default Auditions
+const mapStateToProps = reduxState => reduxState
+
+export default connect(mapStateToProps, { getAuditions })(Auditions)

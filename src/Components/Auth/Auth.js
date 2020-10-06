@@ -63,7 +63,6 @@ const Auth = (props) => {
           <button onClick={() => { handleLogin() }}>Login</button>
           <button onClick={() => { props.history.push('/registeractor') }}>Register</button>
         </div>
-        AUTH.JS
       </div>
     </div>
   )

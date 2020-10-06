@@ -1,29 +1,36 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 import TheaterThumb from './TheaterThumb'
+import { getTheaters } from '../dux/theaterReducer'
 
-const Theaters = () => {
-  const [theaters, setTheaters] = useState([])
+const Theaters = (props) => {
+  // const [theaters, setTheaters] = useState([])
 
   useEffect(() => {
-    getTheaters()
+    props.getTheaters()
   }, [])
 
-  const getTheaters = () => {
-    axios.get('/api/theaters')
-      .then(res => setTheaters(res.data))
-      .catch(err => alert(err))
-  }
+  // const getTheaters = () => {
+  //   axios.get('/api/theaters')
+  //     .then(res => setTheaters(res.data))
+  //     .catch(err => alert(err))
+  // }
 
   return (
     <div>
-      {theaters.map((theater, index) => {
+      {props.theaters.theaters.map((theater) => {
         return (
-          <TheaterThumb key={theater.theater_id} theater={theater} getTheaters={getTheaters} />
+          <TheaterThumb
+            key={theater.theater_id}
+            theater={theater}
+            getTheaters={getTheaters}
+            generalTheaters={true} />
         )
       })}
     </div>
   )
 }
 
-export default Theaters
+const mapStateToProps = reduxState => reduxState
+
+export default connect(mapStateToProps, { getTheaters })(Theaters)

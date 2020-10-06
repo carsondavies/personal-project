@@ -1,6 +1,10 @@
-UPDATE connections
-SET audition_id = null
-WHERE user_id = $1 AND theater_id = $2;
+DELETE FROM connections
+WHERE user_id = $1 AND theater_id = $2 AND audition_id = $3;
+
+INSERT INTO connections
+(user_id, theater_id)
+VALUES
+($1, $2);
 
 SELECT u.id, u.first_name, u.last_name, a.id, a.show, a.run_dates, a.pay_rate, a.rehearsal_dates, t.theater_name
 FROM auditions a 
