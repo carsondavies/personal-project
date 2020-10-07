@@ -32,20 +32,24 @@ const ActorResources = () => {
   }
 
   return (
-    <div>
-      <VideoPlayer currentVideo={currentVideo} />
+    <div className='profile-container'>
+      <div className='video-player'>
+        <VideoPlayer currentVideo={currentVideo} />
+      </div>
 
-      {userVideos.map((video) => {
-        return <div onClick={() => {
-          setCurrentVideo(YouTubeGetID(video.video_url))
-        }}>
-          <Thumbnail
-            key={video.video_id}
-            video={video}
-            getUserVideos={getUserVideos}
-            actorVideos={true} />
-        </div>
-      })}
+      <div className='video-thumbnail-container'>
+        {userVideos.map((video) => {
+          return <div onClick={() => {
+            setCurrentVideo(YouTubeGetID(video.video_url))
+          }}>
+            <Thumbnail
+              key={video.video_id}
+              video={video}
+              getUserVideos={getUserVideos}
+              actorVideos={true} />
+          </div>
+        })}
+      </div>
     </div>
   )
 }

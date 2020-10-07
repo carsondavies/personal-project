@@ -17,16 +17,20 @@ const Theaters = (props) => {
   // }
 
   return (
-    <div>
-      {props.theaters.theaters.map((theater) => {
-        return (
-          <TheaterThumb
-            key={theater.theater_id}
-            theater={theater}
-            getTheaters={getTheaters}
-            generalTheaters={true} />
-        )
-      })}
+    <div className='rb-view'>
+      <div className='resource-container'>
+        <div className='theater-container'>
+          {props.theaters.theaters.map((theater) => {
+            return (
+              <TheaterThumb
+                key={theater.theater_id}
+                theater={theater}
+                getTheaters={getTheaters}
+                generalTheaters={true} />
+            )
+          })}
+        </div>
+      </div>
     </div>
   )
 }

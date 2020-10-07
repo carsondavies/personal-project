@@ -37,9 +37,9 @@ const Auth = (props) => {
       <div className='auth-container'>
         <div className='auth-logos'>
           <h1>
-            logo goes here
+            <img src='https://th.bing.com/th/id/OIP.yVInmA-VBCbAtnxGu-P3WgHaHa?pid=Api&rs=1' alt='masks logo' />
           </h1>
-          <h2>Login/Register here! Or choose one of the options above!</h2>
+          <h2>THEATERHUB</h2>
         </div>
         <div className='input-boxes'>
           <label>Email:

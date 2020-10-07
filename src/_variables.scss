@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+@mixin flex($direction, $jc, $ai){
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $jc;
+  align-items: $ai;
+}
+
+$primary: rgb(221, 153, 240);
+$font: 'Open Sans', sans-serif;
+
+// @mixin tab($tab){
+//   display: flex;
+  
+// }

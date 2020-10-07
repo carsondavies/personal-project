@@ -33,6 +33,7 @@ export function getUser() {
 }
 
 export default function (state = initialState, action) {
+  console.warn(state)
   switch (action.type) {
     case LOGIN_USER:
       return { ...state, user: action.payload, isLoggedIn: true }

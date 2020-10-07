@@ -19,7 +19,7 @@ const ActorAuditions = () => {
   // console.log(userAuditions)
 
   return (
-    <div>
+    <div className='audition-container'>
       {userAuditions.map((audition) => {
         return (
           <AuditionThumb

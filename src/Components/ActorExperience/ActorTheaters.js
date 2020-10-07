@@ -17,7 +17,7 @@ const ActorTheaters = () => {
   }
 
   return (
-    <div>
+    <div className='theater-container'>
       {userTheaters.map(theater => {
         return (
           <TheaterThumb

@@ -29,8 +29,8 @@ import YouTube from 'react-youtube';
 class VideoPlayer extends React.Component {
   render() {
     const opts = {
-      height: '390',
-      width: '640',
+      height: '331.5',
+      width: '544',
       playerVars: {
         // https://developers.google.com/youtube/player_parameters
         autoplay: 1,

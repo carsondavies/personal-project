@@ -4,6 +4,7 @@ import './App.css';
 import routes from './routes'
 import Header from './Components/Header/Header'
 import Auth from './Components/Auth/Auth'
+import './app.scss'
 
 
 function App() {

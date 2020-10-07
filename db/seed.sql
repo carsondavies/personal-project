@@ -43,7 +43,9 @@ audition_id INT references auditions(id)
 CREATE TABLE videos (
 video_id SERIAL PRIMARY KEY,
 vocal_range VARCHAR(100),
-video_url VARCHAR(1000)
+video_url VARCHAR(1000),
+video_title VARCHAR(1000),
+thumbnail VARCHAR(1000)
 );
 
 CREATE TABLE subscriptions (

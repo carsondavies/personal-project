@@ -12,16 +12,20 @@ const Auditions = (props) => {
 
   console.log(props)
   return (
-    <div>
-      {props.auditions.auditions.map((audition) => {
-        return (
-          <AuditionThumb
-            key={audition.id}
-            audition={audition}
-            getAuditions={getAuditions}
-            generalAuditions={true} />
-        )
-      })}
+    <div className='rb-view'>
+      <div className='resource-container'>
+        <div className='audition-container'>
+          {props.auditions.auditions.map((audition) => {
+            return (
+              <AuditionThumb
+                key={audition.id}
+                audition={audition}
+                getAuditions={getAuditions}
+                generalAuditions={true} />
+            )
+          })}
+        </div>
+      </div>
     </div>
   )
 }

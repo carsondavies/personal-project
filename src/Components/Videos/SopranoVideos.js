@@ -18,7 +18,7 @@ const SopranoVideos = (props) => {
   }
 
   return (
-    <div>
+    <div className='video-thumbnail-container'>
       {props.sopranoVideos.map(video => {
         return <div onClick={() => {
           props.setCurrentVideo(YouTubeGetID(video.video_url))

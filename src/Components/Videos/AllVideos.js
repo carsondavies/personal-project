@@ -21,7 +21,7 @@ const AllVideos = (props) => {
   }
 
   return (
-    <div>
+    <div className='video-thumbnail-container'>
       {props.allVideos.map(video => {
         return <div onClick={() => {
           props.setCurrentVideo(YouTubeGetID(video.video_url))

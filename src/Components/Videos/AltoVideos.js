@@ -18,7 +18,7 @@ const AltoVideos = (props) => {
   }
 
   return (
-    <div>
+    <div className='video-thumbnail-container'>
       {props.altoVideos.map(video => {
         return <div onClick={() => {
           props.setCurrentVideo(YouTubeGetID(video.video_url))

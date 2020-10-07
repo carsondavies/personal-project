@@ -13,9 +13,12 @@ const Thumbnail = (props) => {
   }
 
   return (
-    <div>
+    <div className='yt-thumbnail'>
       {(props.actorVideos) ?
-        <button className='minus-button' onClick={() => { handleDisconnect() }} > - </button> : null}
+        <button className='minus-button' onClick={(e) => {
+          e.stopPropagation()
+          handleDisconnect()
+        }} > - </button> : null}
 
 
       <div>
@@ -24,8 +27,9 @@ const Thumbnail = (props) => {
       <img className='video-thumbnail' src={props.video.thumbnail} alt={'video thumbnail'} />
 
       {(props.generalVideos) ?
-        <button className='minus-button' onClick={() => {
-          connectVideo(props.video.video_id)
+        <button className='minus-button' onClick={(e) => {
+          e.stopPropagation()
+          props.connectVideo(props.video.video_id)
         }} > + </button> : null}
 
     </div>

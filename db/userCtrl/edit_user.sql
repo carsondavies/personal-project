@@ -10,5 +10,4 @@ SET first_name = $1,
     hair_color = $9,
     ethnicities = $10,
     age_range = $11
-WHERE id = $12
-returning *;
+WHERE id = $12;

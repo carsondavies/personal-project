@@ -37,6 +37,7 @@ export function disconnectAudition(theater_id, audition_id) {
 }
 
 export default function (state = initialState, action) {
+  console.log(state)
   switch (action.type) {
     case GET_AUDITIONS + '_PENDING':
       return { ...state }

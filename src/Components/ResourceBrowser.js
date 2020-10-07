@@ -61,30 +61,40 @@ const ResourceBrowser = (props) => {
   // console.log(videos)
 
   return (
-    <div>
-      <button onClick={() => { rangeVideos('bass') }}>Bass</button>
-      <button onClick={() => { rangeVideos('tenor') }}>Tenor</button>
-      <button onClick={() => { rangeVideos('alto') }}>Alto</button>
-      <button onClick={() => { rangeVideos('soprano') }}>Soprano</button>
-      <button onClick={() => { rangeVideos('all') }}>All</button>
+    <div className='rb-view'>
+      <div className='tab-container'>
+        <button onClick={() => { rangeVideos('bass') }}>Bass</button>
+        <button onClick={() => { rangeVideos('tenor') }}>Tenor</button>
+        <button onClick={() => { rangeVideos('alto') }}>Alto</button>
+        <button onClick={() => { rangeVideos('soprano') }}>Soprano</button>
+        <button onClick={() => { rangeVideos('all') }}>All</button>
+      </div>
+      <div className='resource-container'>
+        <div className='video-player'>
+          <VideoPlayer currentVideo={currentVideo} />
+        </div>
 
-      <VideoPlayer currentVideo={currentVideo} />
-
-      {tab === 0 ? <AllVideos
-        allVideos={videos}
-        setCurrentVideo={setCurrentVideo} /> : null}
-      {tab === 1 ? <BassVideos
-        bassVideos={videos}
-        setCurrentVideo={setCurrentVideo} /> : null}
-      {tab === 2 ? <TenorVideos
-        tenorVideos={videos}
-        setCurrentVideo={setCurrentVideo} /> : null}
-      {tab === 3 ? <AltoVideos
-        altoVideos={videos}
-        setCurrentVideo={setCurrentVideo} /> : null}
-      {tab === 4 ? <SopranoVideos
-        sopranoVideos={videos}
-        setCurrentVideo={setCurrentVideo} /> : null}
+        {tab === 0 ? <AllVideos
+          className='video-thumbnail-container'
+          allVideos={videos}
+          setCurrentVideo={setCurrentVideo} /> : null}
+        {tab === 1 ? <BassVideos
+          className='video-thumbnail-container'
+          bassVideos={videos}
+          setCurrentVideo={setCurrentVideo} /> : null}
+        {tab === 2 ? <TenorVideos
+          className='video-thumbnail-container'
+          tenorVideos={videos}
+          setCurrentVideo={setCurrentVideo} /> : null}
+        {tab === 3 ? <AltoVideos
+          className='video-thumbnail-container'
+          altoVideos={videos}
+          setCurrentVideo={setCurrentVideo} /> : null}
+        {tab === 4 ? <SopranoVideos
+          className='video-thumbnail-container'
+          sopranoVideos={videos}
+          setCurrentVideo={setCurrentVideo} /> : null}
+      </div>
     </div>
 
   )

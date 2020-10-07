@@ -18,7 +18,7 @@ const TenorVideos = (props) => {
   }
 
   return (
-    <div>
+    <div className='video-thumbnail-container'>
       {props.tenorVideos.map(video => {
         return <div onClick={() => {
           props.setCurrentVideo(YouTubeGetID(video.video_url))

@@ -1,0 +1,131 @@
+@import './variables';
+@import './profile.scss';
+@import './thumbnails';
+
+%tab-selector {
+  background-color: $primary;
+  color: black;
+  border: none;
+  border-radius: 8%;
+}
+
+
+
+
+
+.App{
+  @include flex(row, center, center);
+  background-color: rgb(223, 221, 221);
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.nav-container{
+  @include flex(row, space-around, center);
+  height: 10vh;
+  width: 100vw;
+  position: fixed;
+  top: 0px;
+  margin-bottom: 50px;
+  background-color:transparent;
+  font-family: $font;
+  color: black;
+  
+  .profile-header {
+    height: 50%;
+    width: auto;
+  }
+}
+
+.nav-container:hover{
+  background-color: white;
+  opacity: 70%;
+  color: black;
+}
+
+.auth-view{
+  @include flex(column, space-between, center);
+  height: 400px;
+  width: 500px;
+  margin-top: 50px;
+  background-color:white;
+  border: black;
+  border-radius: 10%;
+}
+.auth-logos{
+  @include flex(column, space-around, center);
+
+  h1 {
+    img{
+      height:100px;
+      width: 100px;
+    }
+  }
+}
+
+.auth-container{
+  @include flex(column, space-between, center);
+  height: 90%;
+  width: 90%;
+  border: black;
+}
+
+.input-boxes {
+  @include flex(column, space-between, flex-end);
+  height: 15%;
+  width: 50%;
+  margin-bottom: 20px;
+}
+
+.auth-button-container {
+  @include flex(row, space-between, center);
+  width: 70%;
+  height: 10%;
+
+  button {
+    background-color: black;
+    color: white;
+    height: 40px;
+    width: 80px;
+    border-radius: 5%;
+  }
+}
+
+.tab-container{
+  // margin-top: 12vh;
+
+  button {
+    @extend %tab-selector;
+  }
+}
+
+.resource-container{
+  @include flex(row, space-evenly, center);
+  height: 85vh;
+  width: 90vw;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.video-player{
+  position: fixed;
+  left: 7vw;
+}
+
+.rb-view{
+  @include flex(column, center, center);
+  margin-top: 12vh;
+  // overflow: hidden;
+  min-height: 88vh;
+}
+
+.video-thumbnail-container{
+  position: fixed;
+  background-color: $primary;
+  top: 20vh;
+  right: 8vw;
+  height: 75%;
+  overflow: auto;
+}
+
