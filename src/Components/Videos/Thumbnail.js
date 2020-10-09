@@ -15,19 +15,19 @@ const Thumbnail = (props) => {
   return (
     <div className='yt-thumbnail'>
       {(props.actorVideos) ?
-        <button className='minus-button' onClick={(e) => {
+        <button className='disconnect-button' onClick={(e) => {
           e.stopPropagation()
           handleDisconnect()
         }} > - </button> : null}
 
 
-      <div>
+      <div className='video-title'>
         {props.video.video_title}
       </div>
       <img className='video-thumbnail' src={props.video.thumbnail} alt={'video thumbnail'} />
 
       {(props.generalVideos) ?
-        <button className='minus-button' onClick={(e) => {
+        <button className='connect-button' onClick={(e) => {
           e.stopPropagation()
           props.connectVideo(props.video.video_id)
         }} > + </button> : null}

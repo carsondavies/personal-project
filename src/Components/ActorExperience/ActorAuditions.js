@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { connect } from 'react-redux'
 import AuditionThumb from '../AuditionThumb'
 
 
-const ActorAuditions = () => {
+const ActorAuditions = (props) => {
   const [userAuditions, setUserAuditions] = useState([])
 
   useEffect(() => {
@@ -19,18 +20,24 @@ const ActorAuditions = () => {
   // console.log(userAuditions)
 
   return (
-    <div className='audition-container'>
-      {userAuditions.map((audition) => {
-        return (
-          <AuditionThumb
-            key={audition.id}
-            audition={audition}
-            getUserAuditions={getUserAuditions}
-            actorAuditions={true} />
-        )
-      })}
+    <div className='profile-container'>
+      {props.user.isLoggedIn ? <div className='audition-container'>
+        {userAuditions.map((audition) => {
+          return (
+            <AuditionThumb
+              key={audition.id}
+              audition={audition}
+              getUserAuditions={getUserAuditions}
+              actorAuditions={true} />
+          )
+        })}
+      </div> : <div>Please log in to view your connected auditions!</div>
+      }
     </div>
+
   )
 }
 
-export default ActorAuditions
+const mapStateToProps = reduxState => reduxState
+
+export default connect(mapStateToProps)(ActorAuditions)

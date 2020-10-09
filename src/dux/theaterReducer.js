@@ -57,6 +57,6 @@ export default function (state = initialState, action) {
     case DISCONNECT_THEATER + '_REJECTED':
       return initialState
     default:
-      return initialState
+      return state
   }
 }

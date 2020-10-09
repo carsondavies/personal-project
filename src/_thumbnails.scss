@@ -1,9 +1,12 @@
+
+
+
 %connect-button{
   @include flex(column, center, center);
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  background-color: orange;
+  background-color: rgb(165, 228, 170);
   font-size: 35px;
 }
 
@@ -12,43 +15,66 @@
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  background-color: orchid;
+  background-color: rgb(247, 133, 133);
   font-size: 35px;
 }
 
-.thumbnail-container{
+.thumbnail{
   @include flex(row, space-between, center);
-  flex-wrap: wrap;
-  height: 70px;
-  width: 90%;
+  background-color: transparent;
+  height: 125px;
+  width: 100%;
   border: black solid;
   padding-left: 15px;
   padding-right: 15px;
-
-  .plus-button{
+  box-sizing: border-box;
+  margin: auto;
+  border-radius: inherit;
+  .connect-button{
     @extend %connect-button;
   }
 
-  .minus-button{
-    @extend %disconnect-button
+  .disconnect-button{
+    @extend %disconnect-button;
   }
 
   p {
-    display: flex;
+    @include flex(row, center, center);
+    width: 130px;
     flex-wrap: wrap;
     font-family: $font;
   }
 }
 
+.thumbnail:hover{
+  cursor: pointer;
+}
+
 .yt-thumbnail{
   @include flex(row, space-between, center);
   height: 100px;
-  width: 400px;
-  border: black solid;
+  width: 416px;
+  border:black solid 1px;
   padding-right: 15px;
   padding-left: 15px;
+  margin: 2px, 0;
+  border-radius: inherit;
 
-  button {
-    @extend %disconnect-button
+  .disconnect-button {
+    @extend %disconnect-button;
   }
+
+  .connect-button {
+    @extend %connect-button;
+  }
+
+  .video-title{
+    font-weight: 500;
+    width: 40%;
+    max-width: 50%;
+  }
+  
 }
+    .yt-thumbnail:hover{
+      cursor: pointer;
+    }

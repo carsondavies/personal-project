@@ -39,7 +39,7 @@ const Auth = (props) => {
           <h1>
             <img src='https://th.bing.com/th/id/OIP.yVInmA-VBCbAtnxGu-P3WgHaHa?pid=Api&rs=1' alt='masks logo' />
           </h1>
-          <h2>THEATERHUB</h2>
+          <h2>THEATERHUB.</h2>
         </div>
         <div className='input-boxes'>
           <label>Email:

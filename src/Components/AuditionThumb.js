@@ -12,15 +12,17 @@ const AuditionThumb = (props) => {
 
   // console.log(props)
   return (
-    <div className='thumbnail-container'>
+    <div className='thumbnail'>
       {(props.actorAuditions) ?
-        <button className='minus-button' onClick={() => { handleDisconnect() }}> - </button> : null}
+        <button className='disconnect-button' onClick={() => { handleDisconnect() }}> - </button> : null}
 
-      <p>{props.audition.id}</p>
-      <p>{props.audition.show}</p>
+      <p>Show:{props.audition.show}</p>
+      <p>Run:{props.audition.run_dates}</p>
+      <p>Rate:{props.audition.pay_rate}</p>
+      <p>Rehersals:{props.audition.rehearsal_dates}</p>
 
       {(props.generalAuditions) ?
-        <button className='plus-button' onClick={() => { props.connectAudition(props.audition.id, props.audition.theater_id) }}> + </button> : null}
+        <button className='connect-button' onClick={() => { props.connectAudition(props.audition.id, props.audition.theater_id) }}> + </button> : null}
     </div>
   )
 }

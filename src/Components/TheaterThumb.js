@@ -12,16 +12,18 @@ const TheaterThumb = (props) => {
   }
 
   return (
-    <div className='thumbnail-container'>
+    <div className='thumbnail'>
       {(props.actorTheaters) ?
-        <button className='minus-button' onClick={() => { handleDisconnect() }}> - </button> : null}
+        <button className='disconnect-button' onClick={() => { handleDisconnect() }}> - </button> : null}
 
-      <p>{props.theater.theater_id}</p>
       <p>{props.theater.theater_name}</p>
       <p>{props.theater.theater_email}</p>
+      <p>{props.theater.location}</p>
+      <p>{props.theater.description}</p>
+      <p>{props.theater.contact}</p>
 
       {(props.generalTheaters) ?
-        <button className='plus-button' onClick={() => { props.connectTheater(props.theater.theater_id) }}> + </button> : null}
+        <button className='connect-button' onClick={() => { props.connectTheater(props.theater.theater_id) }}> + </button> : null}
     </div>
   )
 }

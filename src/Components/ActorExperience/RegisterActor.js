@@ -43,38 +43,38 @@ const RegisterActor = (props) => {
     <div className='register-actor-view'>
       <div className='register-form-container'>
         <h1>Register</h1>
-        <label>First Name:
-          <input
-            type='text'
-            name='first_name'
-            value={first_name}
-            onChange={handleChange}
-            placeholder='First Name' />
-        </label>
-        <label>Last Name:
-          <input
-            type='text'
-            name='last_name'
-            value={last_name}
-            onChange={handleChange}
-            placeholder='Last Name' />
-        </label>
-        <label>Email:
-          <input
-            type='text'
-            name='email'
-            value={email}
-            onChange={handleChange}
-            placeholder='Email' />
-        </label>
-        <label>Password:
-          <input
-            type='password'
-            name='password'
-            value={password}
-            onChange={handleChange}
-            placeholder='Password' />
-        </label>
+
+        <input
+          type='text'
+          name='first_name'
+          value={first_name}
+          onChange={handleChange}
+          placeholder='First Name' />
+
+
+        <input
+          type='text'
+          name='last_name'
+          value={last_name}
+          onChange={handleChange}
+          placeholder='Last Name' />
+
+
+        <input
+          type='text'
+          name='email'
+          value={email}
+          onChange={handleChange}
+          placeholder='Email' />
+
+
+        <input
+          type='password'
+          name='password'
+          value={password}
+          onChange={handleChange}
+          placeholder='Password' />
+
         <div className='register-button-container'>
           <button onClick={() => handleCancel()}>Cancel</button>
           <button onClick={() => { handleRegister() }}>Register</button>

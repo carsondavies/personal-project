@@ -59,6 +59,6 @@ export default function (state = initialState, action) {
     case DISCONNECT_AUDITIONS + '_REJECTED':
       return initialState
     default:
-      return initialState
+      return state
   }
 }

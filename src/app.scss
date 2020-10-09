@@ -3,19 +3,21 @@
 @import './thumbnails';
 
 %tab-selector {
-  background-color: $primary;
-  color: black;
-  border: none;
-  border-radius: 8%;
+  background-color: black;
+  color: white;
+  border-radius: 5%;
 }
 
 
-
+*{
+  font-family: $font;
+}
 
 
 .App{
   @include flex(row, center, center);
-  background-color: rgb(223, 221, 221);
+  // background-color: rgb(223, 221, 221);
+  background: linear-gradient(to right, rgb(118, 118, 118),rgb(149, 195, 230),rgb(255, 255, 255));
   height: 100vh;
   box-sizing: border-box;
   overflow: hidden;
@@ -27,7 +29,7 @@
   width: 100vw;
   position: fixed;
   top: 0px;
-  margin-bottom: 50px;
+  // margin-bottom: 50px;
   background-color:transparent;
   font-family: $font;
   color: black;
@@ -35,13 +37,47 @@
   .profile-header {
     height: 50%;
     width: auto;
+    color: black;
+  }
+
+  .nav-link{
+    font-weight: 700;
+    font-size: 20px;
+    color: inherit;
+    
+    p {
+      color: inherit;
+    }
+  }
+
+  .profile-header{
+    @include flex(row, space-between, center);
+    width: 150px;
+    font-weight: 700;
+    font-size: 20px;
   }
 }
 
+
 .nav-container:hover{
-  background-color: white;
-  opacity: 70%;
-  color: black;
+border-bottom: black solid 2px;
+background-color: transparent;
+}
+
+.login-button {
+  background-color: black;
+  color: white;
+  height: 30px;
+  width: 60px;
+  border-radius: 5%;
+}
+
+.logout-button {
+  background-color: black;
+  color: white;
+  height: 30px;
+  width: 60px;
+  border-radius: 5%;
 }
 
 .auth-view{
@@ -52,6 +88,9 @@
   background-color:white;
   border: black;
   border-radius: 10%;
+  -webkit-box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
+box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
 }
 .auth-logos{
   @include flex(column, space-around, center);
@@ -61,6 +100,12 @@
       height:100px;
       width: 100px;
     }
+  }
+
+  h2{
+    font-family: $font;
+    font-weight: 700;
+    font-size: 40px;
   }
 }
 
@@ -100,12 +145,21 @@
   }
 }
 
+
 .resource-container{
   @include flex(row, space-evenly, center);
-  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 78vh;
   width: 90vw;
   background-color: white;
   box-sizing: border-box;
+  -webkit-box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
+  box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
+  border-radius: 10px;
+  min-height: 80vh;
 }
 
 .video-player{
@@ -114,18 +168,66 @@
 }
 
 .rb-view{
-  @include flex(column, center, center);
+  // @include flex(column, center, center);
+  
   margin-top: 12vh;
-  // overflow: hidden;
-  min-height: 88vh;
+  height: 90vh;
+  box-sizing: border-box;
+  // min-height: 88vh;
+  width: 90%;
 }
 
 .video-thumbnail-container{
+  // @include flex(column, center, center);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: fixed;
-  background-color: $primary;
-  top: 20vh;
-  right: 8vw;
-  height: 75%;
+  background: linear-gradient(rgb(149, 195, 230),rgb(118, 118, 118)) ;
+  top: 25vh;
+  right: 7vw;
+  height: 70vh;
+  width: 37%;
   overflow: auto;
+  margin: auto;
 }
 
+.register-actor-view{
+  @include flex(column, space-between, center);
+  height: 400px;
+  width: 500px;
+  margin-top: 50px;
+  background-color:white;
+  border: black;
+  border-radius: 10%;
+  -webkit-box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
+box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
+
+  .register-form-container{
+    @include flex(column, space-between, center);
+    height: 90%;
+    width: 80%;
+
+    input {
+      width: 200px;
+      display: flex;
+      justify-content: stretch;
+    }
+  }
+
+  .register-button-container{
+    @include flex(row, space-between, center);
+  width: 70%;
+  height: 10%;
+
+  button {
+    background-color: black;
+    color: white;
+    height: 40px;
+    width: 80px;
+    border-radius: 5%;
+  }
+  }
+
+}

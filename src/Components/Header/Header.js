@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logoutUser } from '../../dux/userReducer'
@@ -6,9 +6,6 @@ import axios from 'axios'
 
 const Header = (props) => {
 
-  // useEffect(() => {
-  //   props.getUser()
-  // })
 
   const logout = () => {
     axios.delete('auth/logout').then(() => {
@@ -21,26 +18,35 @@ const Header = (props) => {
     <div className='nav-container'>
       {props.user.isLoggedIn === true ?
         <div className='profile-header'>
-          <Link to='/profile/:id' className='profile-pic'>
-            {/* {props.user.headshot} */}
-            Profile
-        </Link>
           <button className='logout-button' onClick={() => logout()}>
-            logout
+            Sign out.
           </button>
+          <Link to='/profile/:id' className='nav-link'>
+            {/* {props.user.headshot} */}
+            Profile.
+        </Link>
         </div>
-        : null}
+        : (props.location.pathname === '/') ? null : <button className='login-button' onClick={() => { props.history.push('/') }}>Login.</button>}
 
-      <Link to='/auditions'>
-        Auditions
+
+      <Link className='nav-link' to='/auditions'>
+        <p>
+          Auditions.
+        </p>
       </Link>
 
-      <Link to='/theaters'>
-        Theaters
+
+      <Link className='nav-link' to='/theaters'>
+        <p>
+          Theaters.
+        </p>
       </Link>
 
-      <Link to='/resourcebrowser'>
-        Resource Browser
+
+      <Link className='nav-link' to='/resourcebrowser'>
+        <p>
+          Resource Browser.
+        </p>
       </Link>
 
     </div>

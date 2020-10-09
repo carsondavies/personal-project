@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { connect } from 'react-redux'
 import Thumbnail from '../Videos/Thumbnail'
 import VideoPlayer from '../Videos/VideoPlayer'
 
 
-const ActorResources = () => {
+const ActorResources = (props) => {
   const [userVideos, setUserVideos] = useState([])
   const [currentVideo, setCurrentVideo] = useState('')
 
@@ -32,26 +33,35 @@ const ActorResources = () => {
   }
 
   return (
-    <div className='profile-container'>
-      <div className='video-player'>
-        <VideoPlayer currentVideo={currentVideo} />
-      </div>
-
-      <div className='video-thumbnail-container'>
-        {userVideos.map((video) => {
-          return <div onClick={() => {
-            setCurrentVideo(YouTubeGetID(video.video_url))
-          }}>
-            <Thumbnail
-              key={video.video_id}
-              video={video}
-              getUserVideos={getUserVideos}
-              actorVideos={true} />
+    <div>
+      {props.user.isLoggedIn ?
+        <div className='profile-container'>
+          <div className='video-player'>
+            <VideoPlayer currentVideo={currentVideo} />
           </div>
-        })}
-      </div>
+
+          <div className='video-thumbnail-container'>
+            {userVideos.map((video) => {
+              return <div onClick={() => {
+                setCurrentVideo(YouTubeGetID(video.video_url))
+              }}>
+                <Thumbnail
+                  key={video.video_id}
+                  video={video}
+                  getUserVideos={getUserVideos}
+                  actorVideos={true} />
+              </div>
+            })}
+          </div>
+        </div>
+        :
+        <div>Please log in to view your connected videos!</div>
+      }
     </div>
+
   )
 }
 
-export default ActorResources
+const mapStateToProps = reduxState => reduxState
+
+export default connect(mapStateToProps)(ActorResources)

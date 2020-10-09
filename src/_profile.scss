@@ -1,13 +1,16 @@
 @import './variables';
 
 %container{
-  box-sizing: border-box;
+  // @include flex(column, center, center);
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center; 
   height: 85%;
   width: 90%;
-  background-color: rgb(63, 63, 63);
-  flex-wrap: wrap;
-  border-radius: 0%;
-  overflow: hidden;
+  background: linear-gradient(rgb(149, 195, 230),rgb(118, 118, 118)) ;
+  overflow: auto;
+  // margin: auto;
+  border-radius: inherit;
 }
 
 .profile-view {
@@ -15,7 +18,7 @@
   margin-top: 12vh;
   height: 90vh;
   width: 100vw;
-  overflow: hidden;
+  // overflow: auto;
 }
 
 .tab-container {
@@ -33,35 +36,100 @@
 }
 
 .profile-container {
-  @include flex(row, space-evenly, center);
-  height: 85vh;
+  // @include flex(column, space-evenly, center);
+  height: 78vh;
+  max-height: 85vh;
   width: 90vw;
   background-color: white;
   box-sizing: border-box;
+  margin: auto;
+  border-radius: inherit;
 }
 
 .audition-container{
-  @include flex(column, space-evenly, center);
+  // @include flex(column, space-evenly, center);
   @extend %container;
+  width: 90%;
+  margin: auto;
+  overflow: auto;
+  border-radius: inherit;
 }
 
 .theater-container{
-  @include flex(column, space-evenly, center);
+  // @include flex(column, space-evenly, center);
+  display: flex;
+  flex-direction: column;
+  // flex-wrap: nowrap;
+  // align-items: center;
   @extend %container;
+  // overflow: auto;
+  margin: auto;
 }
 
 .user-info{
-  @include flex(column, flex-start , left);
+  @include flex(column, space-between, flex-start);
   height: 85%;
   width: 90%;
   flex-wrap: wrap;
 
-  input{
-    height: auto;
-    width: auto;
+  .edit-info-button {
+    height: 50px;
+    width: 150px;
+    background-color: rgb(149, 195, 230);
+    border-radius: 10px;
+  }
+
+  .cancel-edit-button{
+    position: fixed;
+    top: 350px;
+    right: 80px;
+    height: 50px;
+    width: 150px;
+    background-color: rgb(247, 133, 133);
+    border-radius: 10px;
+  }
+
+  .save-changes{
+    position: fixed;
+    top: 455px;
+    right: 80px;
+    height: 50px;
+    width: 150px;
+    background-color: rgb(165, 228, 170);
+    border-radius: 10px;
+  }
+  
+  .headshot-input{width: 229px;}
+  .first-name{width: 222px;}
+  .last-name{width: 223px;}
+  .resume{width: 222px;}
+  .vocal-range{width: 211px;}
+  .height{    width: 258px;}
+  .weight{    width: 257px;}
+  .eye-color{    width: 240px;}
+  .hair-color{    width: 238px;}
+  .ethnicities{    width: 236px;}
+  .age-range{    width: 230px;  }
+
+
+  label{
+    height: 50px;
+    width: 50%;
+    
+    // margin: auto;
+    input{
+      height: 40px;
+      width: 50%;
+    }
+    
   }
   
   p {
     overflow: auto;
   }
+
 }
+    .headshot{
+      height: 100px;
+      width: 100px;
+    }

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { connect } from 'react-redux'
 import TheaterThumb from '../TheaterThumb'
 
-const ActorTheaters = () => {
+const ActorTheaters = (props) => {
 
   const [userTheaters, setUserTheaters] = useState([])
 
@@ -17,18 +18,27 @@ const ActorTheaters = () => {
   }
 
   return (
-    <div className='theater-container'>
-      {userTheaters.map(theater => {
-        return (
-          <TheaterThumb
-            key={theater.theater_id}
-            theater={theater}
-            getUserTheaters={getUserTheaters}
-            actorTheaters={true} />
-        )
-      })}
+    <div className='profile-container'>
+      {props.user.isLoggedIn ?
+        <div className='theater-container'>
+          {userTheaters.map(theater => {
+            return (
+              <TheaterThumb
+                key={theater.theater_id}
+                theater={theater}
+                getUserTheaters={getUserTheaters}
+                actorTheaters={true} />
+            )
+          })}
+        </div>
+        :
+        <div>Please log in to view your connected theaters!</div>
+      }
     </div>
+
   )
 }
 
-export default ActorTheaters
+const mapStateToProps = reduxState => reduxState
+
+export default connect(mapStateToProps)(ActorTheaters)
