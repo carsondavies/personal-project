@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs')
+const nodemailer = require('nodemailer')
 
 module.exports = {
   register: async (req, res) => {
@@ -21,7 +22,7 @@ module.exports = {
     // await db.store_hash([newUser.id, hash])
 
     req.session.user = newUser
-    console.log(req.session.user)
+    // console.log(req.session.user)
     res.status(200).send(req.session.user)
   },
 
@@ -118,6 +119,37 @@ module.exports = {
       res.status(200).send(req.session.user)
     } else {
       res.status(404).send('No session found')
+    }
+  },
+
+  email: async (req, res) => {
+    const { EMAIL, PASSWORD } = process.env
+    const { email, first_name } = req.body
+
+    try {
+      let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: EMAIL,
+          pass: PASSWORD
+        }
+      })
+      let info = await transporter.sendMail({
+        from: `${EMAIL}`,
+        to: email,
+        subject: `Welcome to TheaterLink ${first_name}!`,
+        text: `Thank you for joining TheaterLink ${first_name}! We hope you book the gig! Feel free to update your profile information so Theaters can get to know you!`
+      }, (err, res) => {
+        if (err) {
+          console.log('err', err)
+        } else {
+          console.log('email sent', res)
+          res.status(200).send(info)
+        }
+      })
+    } catch (err) {
+      console.log(err)
+      res.sendStatus(500)
     }
   }
 }

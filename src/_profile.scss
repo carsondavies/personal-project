@@ -73,6 +73,9 @@
   flex-wrap: wrap;
 
   .edit-info-button {
+    position: fixed;
+    top: 350px;
+    right: 80px;
     height: 50px;
     width: 150px;
     background-color: rgb(149, 195, 230);
@@ -113,23 +116,29 @@
 
 
   label{
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: flex-start;
+    // align-items: inherit;
     height: 50px;
     width: 50%;
     
-    // margin: auto;
     input{
       height: 40px;
       width: 50%;
     }
     
+    p {
+      margin: auto;
+      width: 100px;
+      overflow: auto;
+    }
   }
   
-  p {
-    overflow: auto;
-  }
 
 }
     .headshot{
       height: 100px;
       width: 100px;
+      margin-bottom: 20px;
     }

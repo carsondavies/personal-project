@@ -25,14 +25,19 @@ const RegisterActor = (props) => {
     setState(state => ({ ...state, first_name: '', last_name: '', email: '', password: '' }))
   }
 
+  const handleSend = () => {
+    axios.post('/api/email', { email, first_name }).then(res => {
+      console.log(res)
+    })
+  }
+
   function handleRegister() {
     axios
       .post('auth/register', { first_name, last_name, email, password })
-      // console.log(first_name, last_name)
       .then((res) => {
-        console.log(res.data)
         props.loginUser(res.data)
         props.history.push('/profile/:id')
+        handleSend()
       })
       .catch(err => {
         alert(err)

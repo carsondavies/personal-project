@@ -36,6 +36,7 @@ app.post('/auth/registertheater', authCtrl.registerTheater)
 app.post('/auth/logintheater', authCtrl.loginTheater)
 app.delete('/auth/logouttheater', authCtrl.logoutTheater)
 app.get('/auth/theater', authCtrl.getTheater)
+app.post('/api/email', authCtrl.email)
 
 //adding video endpoints
 app.post('/api/videos/bass', verifyUser, resourceCtrl.addVideoToBass)
