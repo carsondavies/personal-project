@@ -138,7 +138,7 @@ module.exports = {
         from: `${EMAIL}`,
         to: email,
         subject: `Welcome to TheaterLink ${first_name}!`,
-        text: `Thank you for joining TheaterLink ${first_name}! We hope you book the gig! Feel free to update your profile information so Theaters can get to know you!`
+        text: `Thank you for joining TheaterLink ${first_name}! We hope you book the gig! Feel free to update your profile information so our Theaters can get to know you!`
       }, (err, res) => {
         if (err) {
           console.log('err', err)
