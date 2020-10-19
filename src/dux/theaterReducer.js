@@ -48,7 +48,7 @@ export default function (state = initialState, action) {
       return { ...state }
     case CONNECT_THEATER + '_FULFILLED':
       return { ...state, isConnected: true }
-    case CONNECT_THEATER + '_REJECTECT':
+    case CONNECT_THEATER + '_REJECTED':
       return initialState
     case DISCONNECT_THEATER + '_PENDING':
       return { ...state }
