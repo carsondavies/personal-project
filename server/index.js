@@ -1,4 +1,5 @@
 require('dotenv').config()
+const path = require('path')
 const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
@@ -15,6 +16,7 @@ const app = express()
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
 
 app.use(express.json())
+app.use(express.static(`${__dirname}/../build`))
 app.use(
   session({
     secret: SESSION_SECRET,
@@ -71,6 +73,10 @@ app.post('/api/users/theaters/:theater_id', userCtrl.connectTheater)
 app.delete('/api/users/theaters/:theater_id', userCtrl.disconnectTheater)
 app.post('/api/users/:audition_id/:theater_id', userCtrl.connectAudition)
 app.delete('/api/users/:theater_id/:audition_id', userCtrl.disconnectAudition)
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 massive({
   connectionString: CONNECTION_STRING,
