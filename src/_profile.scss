@@ -36,13 +36,14 @@
 }
 
 .profile-container {
-  // @include flex(column, space-evenly, center);
+  @include flex(column, center, center);
+  position: relative;
   height: 78vh;
   max-height: 85vh;
   width: 90vw;
   background-color: white;
   box-sizing: border-box;
-  margin: auto;
+  // margin: auto;
   border-radius: inherit;
 }
 
@@ -63,75 +64,84 @@
   // align-items: center;
   @extend %container;
   // overflow: auto;
-  margin: auto;
+  // margin: auto;
 }
 
 .user-info{
   @include flex(column, space-between, flex-start);
+  position: relative;
   height: 85%;
   width: 90%;
   flex-wrap: wrap;
+  box-sizing: border-box;
 
   .edit-info-button {
-    position: fixed;
-    top: 350px;
-    right: 80px;
-    height: 50px;
-    width: 150px;
+    height: 11.5%;
+    width: 24%;
     background-color: rgb(149, 195, 230);
     border-radius: 10px;
   }
 
+  .edit-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 30%;
+    width: 25%;
+    margin-left: 80px;
+  }
+
   .cancel-edit-button{
-    position: fixed;
-    top: 350px;
-    right: 80px;
-    height: 50px;
-    width: 150px;
+    // margin-left: 90px;
+    height: 40%;
+    width: 100%;
     background-color: rgb(247, 133, 133);
     border-radius: 10px;
   }
 
   .save-changes{
-    position: fixed;
-    top: 455px;
-    right: 80px;
-    height: 50px;
-    width: 150px;
+    // margin-left: 90px;
+    height: 40%;
+    width: 100%;
     background-color: rgb(165, 228, 170);
     border-radius: 10px;
   }
   
-  .headshot-input{width: 229px;}
-  .first-name{width: 222px;}
-  .last-name{width: 223px;}
-  .resume{width: 222px;}
-  .vocal-range{width: 211px;}
-  .height{    width: 258px;}
-  .weight{    width: 257px;}
-  .eye-color{    width: 240px;}
-  .hair-color{    width: 238px;}
-  .ethnicities{    width: 236px;}
-  .age-range{    width: 230px;  }
+  // .headshot-input{width: 229px;}
+  // .first-name{width: 222px;}
+  // .last-name{width: 223px;}
+  // .resume{width: 222px;}
+  // .vocal-range{width: 211px;}
+  // .height{    width: 258px;}
+  // .weight{    width: 257px;}
+  // .eye-color{    width: 240px;}
+  // .hair-color{    width: 238px;}
+  // .ethnicities{    width: 236px;}
+  // .age-range{    width: 230px;  }
 
 
   label{
-    // display: flex;
-    // flex-direction: row;
-    // justify-content: flex-start;
-    // align-items: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     height: 50px;
     width: 50%;
+    font-weight: 700;
+    margin-right: 20px;
     
     input{
+      display: flex;
+      margin-left: 10px;
+      // justify-content: stretch;
       height: 40px;
-      width: 50%;
+      width: 40vw;
     }
     
     p {
-      margin: auto;
-      width: 100px;
-      overflow: auto;
+      font-weight: normal;
+      margin-left: 15px;
     }
   }
   

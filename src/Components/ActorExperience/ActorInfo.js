@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import '../../_profile.scss'
 
 const ActorInfo = (props) => {
   const [info, setInfo] = useState({
@@ -62,9 +63,7 @@ const ActorInfo = (props) => {
   return (
     <div className='profile-container'>
       {props.user.isLoggedIn ? <div className='user-info'>
-        {(editing) ? <button className='cancel-edit-button' onClick={() => setEditing(!editing)}>Cancel</button>
-          :
-          <button className='edit-info-button' onClick={() => setEditing(!editing)}>Edit My Info</button>}
+        
 
         {(editing) ? (<>
           <label htmlFor='headshot'>Headshot:   <input className='headshot-input' name='headshot'
@@ -100,14 +99,17 @@ const ActorInfo = (props) => {
           <label for="age_range">Age Range:    <input className='age-range' name='age-range'
             value={age_range}
             onChange={handleChange} /></label>
-          <button className='save-changes' onClick={() => { handleSubmit(first_name, last_name, headshot, resume, vocal_range, height, weight, eye_color, hair_color, ethnicities, age_range) }}>Save Changes</button>
+          <div className='edit-buttons'>
+            <button className='cancel-edit-button' onClick={() => setEditing(!editing)}>Cancel</button>
+            <button className='save-changes' onClick={() => { handleSubmit(first_name, last_name, headshot, resume, vocal_range, height, weight, eye_color, hair_color, ethnicities, age_range) }}>Save Changes</button>
+          </div>
 
         </>)
           : (<>
             <div>
               <img src={info.headshot} className='headshot' />
             </div>
-            <label for="">First Name:   <p>{info.first_name}</p></label>
+            <label for="">First Name:  <p>{info.first_name}</p></label>
             <label for="">Last Name:    <p>{info.last_name}</p></label>
             <label for="">Experience:   <p>{info.resume}</p></label>
             <label>Vocal Range:   <p>{info.vocal_range}</p></label>
@@ -116,7 +118,11 @@ const ActorInfo = (props) => {
             <label for="">Eye Color:    <p>{info.eye_color}</p></label>
             <label for="">Hair Color:   <p>{info.hair_color}</p></label>
             <label for="">Ethnicities:    <p>{info.ethnicities}</p></label>
-            <label for="">Age Range:    <p>{info.age_range}</p></label> </>)}
+            <label for="">Age Range:    <p>{info.age_range}</p></label>
+            {(editing) ? null
+          :
+          <button className='edit-info-button' onClick={() => setEditing(!editing)}>Edit My Info</button>}
+             </>)}
       </div>
         : <div>Please log in to set up your very own profile!</div>
       }

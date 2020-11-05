@@ -3,6 +3,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loginUser } from '../../dux/userReducer'
+import '../../app.scss'
 
 const Auth = (props) => {
 
@@ -42,22 +43,22 @@ const Auth = (props) => {
           <h2>THEATERLINK.</h2>
         </div>
         <div className='input-boxes'>
-          <label>Email:
+          <span>Email:
             <input
               type='text'
               name='email'
               value={email}
               onChange={handleChange}
               placeholder='enter email' />
-          </label>
-          <label>Password:
+          </span>
+          <span>Password:
              <input
               type='password'
               name='password'
               value={password}
               onChange={handleChange}
               placeholder='enter password' />
-          </label>
+          </span>
         </div>
         <div className='auth-button-container'>
           <button onClick={() => { handleLogin() }}>Login</button>
