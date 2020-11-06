@@ -2,6 +2,9 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import AuditionThumb from './AuditionThumb'
 import { getAuditions } from '../dux/auditionReducer'
+import '../_profile.scss'
+import '../app.scss'
+
 
 const Auditions = (props) => {
 

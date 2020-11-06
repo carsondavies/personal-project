@@ -2,6 +2,9 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import TheaterThumb from './TheaterThumb'
 import { getTheaters } from '../dux/theaterReducer'
+import '../_profile.scss'
+import '../app.scss'
+
 
 const Theaters = (props) => {
   // const [theaters, setTheaters] = useState([])

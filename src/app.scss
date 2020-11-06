@@ -110,14 +110,15 @@ box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
 }
 
 .auth-container{
-  @include flex(column, space-between, center);
+  @include flex(column, space-evenly, center);
   height: 90%;
   width: 90%;
   border: black;
+  margin: 20px;
 }
 
 .input-boxes {
-  @include flex(column, space-between, flex-end);
+  @include flex(column, space-evenly, flex-end);
   height: 20%;
   width: 45%;
   margin-bottom: 20px;
@@ -160,7 +161,7 @@ box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 78vh;
+  height: 85vh;
   width: 90vw;
   background-color: white;
   box-sizing: border-box;
