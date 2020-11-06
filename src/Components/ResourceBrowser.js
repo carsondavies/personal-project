@@ -70,30 +70,33 @@ const ResourceBrowser = (props) => {
         <button onClick={() => { rangeVideos('all') }}>All</button>
       </div>
       <div className='resource-container'>
-        <div className='video-player'>
-          <VideoPlayer currentVideo={currentVideo} />
-        </div>
 
-        {tab === 0 ? <AllVideos
+          <div className='video-player'>
+            <VideoPlayer currentVideo={currentVideo} />
+          </div>
+
+
+        <div className='video-thumbnail-container'>
+          {tab === 0 ? <AllVideos
           className='video-thumbnail-container'
           allVideos={videos}
           setCurrentVideo={setCurrentVideo} /> : null}
-        {tab === 1 ? <BassVideos
+          {tab === 1 ? <BassVideos
           className='video-thumbnail-container'
           bassVideos={videos}
           setCurrentVideo={setCurrentVideo} /> : null}
-        {tab === 2 ? <TenorVideos
+          {tab === 2 ? <TenorVideos
           className='video-thumbnail-container'
           tenorVideos={videos}
           setCurrentVideo={setCurrentVideo} /> : null}
-        {tab === 3 ? <AltoVideos
+          {tab === 3 ? <AltoVideos
           className='video-thumbnail-container'
           altoVideos={videos}
           setCurrentVideo={setCurrentVideo} /> : null}
-        {tab === 4 ? <SopranoVideos
+          {tab === 4 ? <SopranoVideos
           className='video-thumbnail-container'
           sopranoVideos={videos}
-          setCurrentVideo={setCurrentVideo} /> : null}
+          setCurrentVideo={setCurrentVideo} /> : null}</div>
       </div>
     </div>
 

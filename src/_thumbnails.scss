@@ -59,7 +59,7 @@
 .yt-thumbnail{
   @include flex(row, space-between, center);
   height: 100px;
-  width: 416px;
+  width: 100%;
   border:black solid 1px;
   padding-right: 15px;
   padding-left: 15px;
