@@ -22,7 +22,7 @@
 .thumbnail{
   @include flex(row, space-between, center);
   background: linear-gradient(rgb(162, 153, 241),rgb(149, 149, 149));
-  height: 20%;
+  height: 30%;
   width: 90%;
   padding-left: 15px;
   padding-right: 15px;
@@ -31,6 +31,7 @@
   border-radius: inherit;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
   .connect-button{
     @extend %connect-button;
   }
@@ -41,10 +42,13 @@
 
   p {
     @include flex(row, center, center);
-    width: 130px;
+    width: 20%;
     flex-wrap: wrap;
     font-family: $font;
+    
     margin-right: 5px;
+    border-right: black solid 1px;
+    box-sizing: border-box;
   }
 }
 
