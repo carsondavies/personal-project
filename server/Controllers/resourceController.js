@@ -17,9 +17,9 @@ module.exports = {
     const {video_url, video_title, vocal_range} = req.params
 
     const videoId = YouTubeGetID(video_url)
-
+      console.log(videoId)
     const [video] = await db.videoQueries.check_video([video_url])
-
+      console.log('check video hit')
     if (video) {
       return res.status(409).send('Video already in database')
     } else {

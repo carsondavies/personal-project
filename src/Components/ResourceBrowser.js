@@ -12,6 +12,13 @@ const ResourceBrowser = (props) => {
   const [videos, setVideos] = useState([])
   const [currentVideo, setCurrentVideo] = useState('')
   const [tab, setTab] = useState(0)
+  const [url, setUrl] = useState('')
+  const [state, setState] = useState({
+    video_title: '',
+    video_url: ''
+  })
+
+  const {video_title, video_url} = state
 
 
 
@@ -58,7 +65,7 @@ const ResourceBrowser = (props) => {
     }
   }
 
-  // console.log(videos)
+ 
 
   return (
     <div className='rb-view'>
@@ -71,9 +78,7 @@ const ResourceBrowser = (props) => {
       </div>
       <div className='resource-container'>
 
-          <div className='video-player'>
-            <VideoPlayer currentVideo={currentVideo} />
-          </div>
+          
 
 
         <div className='video-thumbnail-container'>
