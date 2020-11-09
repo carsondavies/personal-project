@@ -189,6 +189,13 @@ box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
   width: 90%;
 }
 
+.resource-left-side{
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 50%;
+}
+
 .video-thumbnail-container{
   // @include flex(column, center, center);
   position: fixed;

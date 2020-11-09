@@ -41,7 +41,7 @@ app.get('/auth/theater', authCtrl.getTheater)
 app.post('/api/email', authCtrl.email)
 
 //adding video endpoints
-app.post('/api/videos/:video_url/:video_title/:vocal_range', verifyUser, resourceCtrl.addVideo)
+app.post('/api/videos/:video_title/:vocal_range', verifyUser, resourceCtrl.addVideo)
 app.post('/api/videos/bass', verifyUser, resourceCtrl.addVideoToBass)
 app.post('/api/videos/tenor', verifyUser, resourceCtrl.addVideoToTenor)
 app.post('/api/videos/alto', verifyUser, resourceCtrl.addVideoToAlto)

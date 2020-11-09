@@ -14,7 +14,8 @@ const YouTubeGetID = (url) => {
 module.exports = {
   addVideo: async (req, res) => {
     const db = req.app.get('db')
-    const {video_url, video_title, vocal_range} = req.params
+    const {video_title, vocal_range} = req.params
+    const {video_url} = req.body
 
     const videoId = YouTubeGetID(video_url)
       console.log(videoId)
