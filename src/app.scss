@@ -176,6 +176,7 @@ box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
 
 .video-player{
   position: relative;
+  bottom: 15vh;
   right: 20vw;
 }
 
@@ -192,8 +193,42 @@ box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
 .resource-left-side{
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   height: 90%;
   width: 50%;
+}
+
+.add-video-section{
+  position: fixed;
+  top: 68vh;
+  right: 60vw;
+  height: 30%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: stretch;
+  font-family: $font;
+
+  p{
+    font-size: large;
+  }
+  select{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  form{
+    height: 20%;
+  }
+  button {
+    background-color: black;
+    color: white;
+    height: 100%;
+    width: 40%;
+    border-radius: 5%;
+  }
 }
 
 .video-thumbnail-container{
@@ -207,7 +242,7 @@ box-shadow: 3px 15px 17px 2px rgba(0,0,0,0.75);
   height: 70vh;
   width: 37%;
   overflow: auto;
-
+  font-family: $font;
 }
 
 .register-actor-view{
