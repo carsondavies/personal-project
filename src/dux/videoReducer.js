@@ -37,7 +37,7 @@ export function disconnectVideo(video_id) {
 }
 
 export default function (state = initialState, action) {
-  console.log('hit reducer')
+  // console.log('hit reducer')
   switch (action.type) {
     case GET_VIDEOS + '_PENDING':
       return { ...state }

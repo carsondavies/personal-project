@@ -2,7 +2,7 @@ const YouTubeGetID = (url) => {
   var ID = '';
   url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
   if (url[2] !== undefined) {
-    ID = url[2].split(/[^0-9a-z_\-]/i);
+    ID = url[2].split(/[^0-9a-z_-]/i);
     ID = ID[0];
   }
   else {
@@ -16,6 +16,8 @@ module.exports = {
     const db = req.app.get('db')
     const {video_title, vocal_range} = req.params
     const {video_url} = req.body
+    
+    console.log(req.session)
 
     const videoId = YouTubeGetID(video_url)
       console.log(videoId)

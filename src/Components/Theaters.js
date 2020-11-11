@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import TheaterThumb from './TheaterThumb'
 import { getTheaters } from '../dux/theaterReducer'
+import {getUser} from '../dux/userReducer.js'
+
 import '../_profile.scss'
 import '../app.scss'
 
@@ -11,6 +13,7 @@ const Theaters = (props) => {
 
   useEffect(() => {
     props.getTheaters()
+    props.getUser()
   }, [])
 
   // const getTheaters = () => {
@@ -40,4 +43,4 @@ const Theaters = (props) => {
 
 const mapStateToProps = reduxState => reduxState
 
-export default connect(mapStateToProps, { getTheaters })(Theaters)
+export default connect(mapStateToProps, { getTheaters, getUser })(Theaters)

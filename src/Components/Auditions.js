@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import AuditionThumb from './AuditionThumb'
 import { getAuditions } from '../dux/auditionReducer'
+import {getUser} from '../dux/userReducer.js'
 import '../_profile.scss'
 import '../app.scss'
 
@@ -10,6 +11,7 @@ const Auditions = (props) => {
 
   useEffect(() => {
     props.getAuditions()
+    props.getUser()
   }, [])
 
 
@@ -35,4 +37,4 @@ const Auditions = (props) => {
 
 const mapStateToProps = reduxState => reduxState
 
-export default connect(mapStateToProps, { getAuditions })(Auditions)
+export default connect(mapStateToProps, { getAuditions, getUser })(Auditions)

@@ -8,6 +8,7 @@ import AltoVideos from './Videos/AltoVideos'
 import SopranoVideos from './Videos/SopranoVideos'
 import { connect } from 'react-redux'
 import { getVideos } from '../dux/videoReducer'
+import {getUser} from '../dux/userReducer.js'
 
 const ResourceBrowser = (props) => {
   const [videos, setVideos] = useState([])
@@ -26,10 +27,11 @@ const ResourceBrowser = (props) => {
   useEffect(() => {
     console.log('hit useeffect')
     props.getVideos()
+    props.getUser()
   }, [])
 
   useEffect(() => {
-    console.log('hit useeffect')
+    console.log('hit useeffect 2')
     rangeVideos('all')
   }, [props.videos])
 
@@ -37,7 +39,7 @@ const ResourceBrowser = (props) => {
 
   const rangeVideos = async (vocal_range) => {
     if (vocal_range !== 'all') {
-      console.log(vocal_range)
+      // console.log(vocal_range)
       const specificVideos = await props.videos.videos.filter(video => {
         if (video.vocal_range === vocal_range) {
           return true
@@ -74,9 +76,10 @@ const ResourceBrowser = (props) => {
   const addVideo = () => {
     console.log('add video hit')
     axios.post(`/api/videos/${video_title}/${vocal_range}`, {video_url})
-        .then(res => {alert(res.data)})
+        .then(res => {console.log(res)})
         .catch(err => {console.log(err)})
     props.getVideos()
+    rangeVideos('all')
     console.log('get videos hit again')
     setState({
       video_title: '',
@@ -100,6 +103,8 @@ const ResourceBrowser = (props) => {
             <div className='video-player'>
           <VideoPlayer currentVideo={currentVideo} />
           </div>
+          <p>Add a video to our database here!</p>
+          <p>*NOTE: You must be logged in to add a video*</p>
           <span>Video Title:
           <input
           type='text'
@@ -119,13 +124,15 @@ const ResourceBrowser = (props) => {
           />
           </span>
           <select className='range-select' name='vocal_range' onChange={(e) => setVocalRange(e.target.value)}>
-          <option value=''>Select a vocal range</option>
+          <option value='1'>Select a vocal range</option>
           <option value='soprano'>Soprano</option>
           <option value='alto'>Alto</option>
           <option value='tenor'>Tenor</option>
           <option value='bass'>Bass</option>
           </select>
-          <button onClick={addVideo}>Submit Video</button>
+          <form action="">
+            <button onClick={addVideo}>Submit Video</button>
+          </form>
           </div>
 
 
@@ -158,4 +165,4 @@ const ResourceBrowser = (props) => {
 
 const mapStateToProps = reduxState => reduxState
 
-export default connect(mapStateToProps, { getVideos })(ResourceBrowser)
+export default connect(mapStateToProps, { getVideos, getUser })(ResourceBrowser)

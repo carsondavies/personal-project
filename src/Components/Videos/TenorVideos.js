@@ -8,7 +8,7 @@ const TenorVideos = (props) => {
     var ID = '';
     url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
     if (url[2] !== undefined) {
-      ID = url[2].split(/[^0-9a-z_\-]/i);
+      ID = url[2].split(/[^0-9a-z_-]/i);
       ID = ID[0];
     }
     else {
@@ -20,12 +20,11 @@ const TenorVideos = (props) => {
   return (
     <div className='video-thumbnail-container'>
       {props.tenorVideos.map(video => {
-        return <div onClick={() => {
+        return <div key={video.video_id} onClick={() => {
           props.setCurrentVideo(YouTubeGetID(video.video_url))
         }} >
 
           <Thumbnail
-            key={video.video_id}
             generalVideos={true}
             video={video}
           />

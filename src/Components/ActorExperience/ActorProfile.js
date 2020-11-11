@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import {connect} from 'react-redux'
+import {getUser} from '../../dux/userReducer'
 import ActorInfo from './ActorInfo'
 import ActorAuditions from './ActorAuditions'
 import ActorTheaters from './ActorTheaters'
 import ActorResources from './ActorResources'
 
-const ActorProfile = () => {
+const ActorProfile = (props) => {
   const [tab, setTab] = useState(0)
+
+  useEffect(() => {
+    props.getUser()
+  }, [])
 
 
   return (
@@ -26,4 +32,6 @@ const ActorProfile = () => {
   )
 }
 
-export default ActorProfile
+const mapStateToProps = reduxState => reduxState
+
+export default connect (mapStateToProps, {getUser})(ActorProfile)
