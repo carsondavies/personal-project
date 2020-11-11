@@ -73,6 +73,10 @@ const ResourceBrowser = (props) => {
     setState(state => ({ ...state, [name]: value }))
   }
 
+  const refreshPage = () => {
+    window.location.reload()
+  }
+
   const addVideo = () => {
     console.log('add video hit')
     axios.post(`/api/videos/${video_title}/${vocal_range}`, { video_url })
@@ -86,6 +90,7 @@ const ResourceBrowser = (props) => {
       video_url: ''
     })
     setVocalRange('')
+    refreshPage()
   }
 
   return (
@@ -125,15 +130,15 @@ const ResourceBrowser = (props) => {
               />
             </span>
             <select className='range-select' name='vocal_range' onChange={(e) => setVocalRange(e.target.value)}>
-              <option value='1'>Select a vocal range</option>
+              <option value=''>Select a vocal range</option>
               <option value='soprano'>Soprano</option>
               <option value='alto'>Alto</option>
               <option value='tenor'>Tenor</option>
               <option value='bass'>Bass</option>
             </select>
-            <form action="">
-              <button onClick={addVideo}>Submit Video</button>
-            </form>
+
+            <button onClick={addVideo}>Submit Video</button>
+
             <p>*You must be logged in to add a video*</p>
           </div>
         </div>
